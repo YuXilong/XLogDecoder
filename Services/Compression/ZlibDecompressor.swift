@@ -4,94 +4,73 @@
 //
 
 import Foundation
-import Compression
+import zlib
 
 class ZlibDecompressor {
     func decompress(_ data: Data) throws -> Data {
         // xlog使用原始deflate格式(对应Python的-zlib.MAX_WBITS)
-        // 先尝试LZFSE,如果失败再尝试ZLIB
+        // 需要使用zlib的inflateInit2函数,windowBits设为-15
         
-        print("🔧 Attempting decompression...")
+        print("🔧 Attempting raw deflate decompression...")
         print("   Input size: \(data.count) bytes")
         print("   First 4 bytes: \(data.prefix(4).map { String(format: "%02X", $0) }.joined(separator: " "))")
         
-        // 预分配输出缓冲区
-        let bufferSize = max(data.count * 10, 65536)
-        var output = Data(count: bufferSize)
+        var stream = z_stream()
+        var output = Data()
+        var status: Int32 = Z_OK
         
-        // 尝试1: LZFSE (可能支持原始deflate)
-        var decompressedSize = data.withUnsafeBytes { inputPtr -> Int in
-            output.withUnsafeMutableBytes { outputPtr -> Int in
-                guard let inputBaseAddress = inputPtr.baseAddress,
-                      let outputBaseAddress = outputPtr.baseAddress else {
-                    return 0
+        // 使用withUnsafeBytes处理输入数据
+        let result = data.withUnsafeBytes { (inputBytes: UnsafeRawBufferPointer) -> Bool in
+            guard let inputBaseAddress = inputBytes.baseAddress else {
+                print("   ❌ Failed to get input base address")
+                return false
+            }
+            
+            stream.avail_in = UInt32(data.count)
+            stream.next_in = UnsafeMutablePointer<UInt8>(mutating: inputBaseAddress.assumingMemoryBound(to: UInt8.self))
+            
+            // 使用-15作为windowBits表示原始deflate格式(无zlib header)
+            // 对应Python的-zlib.MAX_WBITS
+            status = inflateInit2_(&stream, -15, ZLIB_VERSION, Int32(MemoryLayout<z_stream>.size))
+            
+            guard status == Z_OK else {
+                print("   ❌ inflateInit2 failed with status: \(status)")
+                return false
+            }
+            
+            // 解压缩循环
+            repeat {
+                let outputBufferSize = 65536
+                var outputBuffer = [UInt8](repeating: 0, count: outputBufferSize)
+                
+                outputBuffer.withUnsafeMutableBytes { bufferPtr in
+                    stream.avail_out = UInt32(outputBufferSize)
+                    stream.next_out = bufferPtr.baseAddress?.assumingMemoryBound(to: UInt8.self)
                 }
                 
-                return compression_decode_buffer(
-                    outputBaseAddress,
-                    bufferSize,
-                    inputBaseAddress,
-                    data.count,
-                    nil,
-                    COMPRESSION_LZFSE
-                )
-            }
-        }
-        
-        if decompressedSize > 0 {
-            print("   ✅ LZFSE decompression succeeded: \(decompressedSize) bytes")
-            return output.prefix(decompressedSize)
-        }
-        
-        // 尝试2: ZLIB
-        decompressedSize = data.withUnsafeBytes { inputPtr -> Int in
-            output.withUnsafeMutableBytes { outputPtr -> Int in
-                guard let inputBaseAddress = inputPtr.baseAddress,
-                      let outputBaseAddress = outputPtr.baseAddress else {
-                    return 0
+                status = inflate(&stream, Z_NO_FLUSH)
+                
+                if status != Z_OK && status != Z_STREAM_END {
+                    print("   ❌ inflate failed with status: \(status)")
+                    inflateEnd(&stream)
+                    return false
                 }
                 
-                return compression_decode_buffer(
-                    outputBaseAddress,
-                    bufferSize,
-                    inputBaseAddress,
-                    data.count,
-                    nil,
-                    COMPRESSION_ZLIB
-                )
-            }
-        }
-        
-        if decompressedSize > 0 {
-            print("   ✅ ZLIB decompression succeeded: \(decompressedSize) bytes")
-            return output.prefix(decompressedSize)
-        }
-        
-        // 尝试3: LZ4
-        decompressedSize = data.withUnsafeBytes { inputPtr -> Int in
-            output.withUnsafeMutableBytes { outputPtr -> Int in
-                guard let inputBaseAddress = inputPtr.baseAddress,
-                      let outputBaseAddress = outputPtr.baseAddress else {
-                    return 0
-                }
+                let have = outputBufferSize - Int(stream.avail_out)
+                output.append(contentsOf: outputBuffer.prefix(have))
                 
-                return compression_decode_buffer(
-                    outputBaseAddress,
-                    bufferSize,
-                    inputBaseAddress,
-                    data.count,
-                    nil,
-                    COMPRESSION_LZ4
-                )
-            }
+            } while status != Z_STREAM_END
+            
+            inflateEnd(&stream)
+            return true
         }
         
-        if decompressedSize > 0 {
-            print("   ✅ LZ4 decompression succeeded: \(decompressedSize) bytes")
-            return output.prefix(decompressedSize)
+        guard result && status == Z_STREAM_END else {
+            print("   ❌ Decompression incomplete, status: \(status)")
+            throw DecoderError.decompressionFailed
         }
         
-        print("   ❌ All decompression methods failed")
-        throw DecoderError.decompressionFailed
+        print("   ✅ Raw deflate decompression succeeded: \(output.count) bytes")
+        return output
     }
 }
