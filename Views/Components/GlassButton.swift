@@ -39,19 +39,21 @@ struct GlassButton: View {
             .foregroundColor(isPrimary ? .white : .primary)
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
-            .background(
-                Group {
-                    if isPrimary {
-                        AppColors.primaryGradient
-                    } else {
-                        Color.white.opacity(0.3)
-                            .background(.regularMaterial)
-                    }
+            .background {
+                if isPrimary {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(AppColors.primaryGradient)
+                } else {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(.regularMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.white.opacity(0.1))
+                        )
                 }
-            )
-            .cornerRadius(10)
+            }
             .shadow(
-                color: isPrimary ? .blue.opacity(0.3) : .clear,
+                color: isPrimary ? .blue.opacity(0.3) : .black.opacity(0.05),
                 radius: isHovered ? 8 : 4,
                 x: 0,
                 y: isHovered ? 4 : 2

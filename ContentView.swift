@@ -126,9 +126,16 @@ struct ContentView: View {
             .padding(.vertical, Spacing.lg)
         }
         .frame(minWidth: 900, minHeight: 600)
+        .background(.ultraThinMaterial)
         .background(
-            Color.white.opacity(0.8)
-                .background(.ultraThinMaterial)
+            LinearGradient(
+                colors: [
+                    Color.white.opacity(0.3),
+                    Color.blue.opacity(0.05)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         )
     }
 }
