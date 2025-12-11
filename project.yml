@@ -15,15 +15,17 @@ targets:
     platform: macOS
 
     sources:
-      - path: .
-        name: Sources
-        excludes:
-          - "*.md"
-          - "*.sh"
-          - ".git*"
-          - "AppIcon.appiconset"
-          - "icon_1024x1024.png"
-          - "AppIcon.icns"
+      - XLogDecoderApp.swift
+      - ContentView.swift
+      - Models
+      - ViewModels
+      - Views
+      - Services
+      - Utilities
+
+    resources:
+      - path: Assets.xcassets
+        type: folder
 
     settings:
       PRODUCT_NAME: XLogDecoder
@@ -37,6 +39,7 @@ targets:
       CODE_SIGN_STYLE: Automatic
       CODE_SIGN_IDENTITY: "-"
       COMBINE_HIDPI_IMAGES: YES
+      GENERATE_INFOPLIST_FILE: NO
 
     scheme:
       testTargets: []

@@ -7,55 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5AF823F76FC1AAFE3361A4 /* XLogDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50AE3E8403F26C49DEB1604 /* XLogDecoder.swift */; };
 		1961667751F64A0A83D21EFE /* TEADecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D429B37D470F123100CD040 /* TEADecryptor.swift */; };
-		1FF3BCEEA15D101B3B072DC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62BFE7114453A000460ADD7 /* Constants.swift */; };
+		29F1FFE9936F69831C0D2F6F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1573E48F3582787BD6A55 /* ColorExtension.swift */; };
+		2C5E784E803FB940D23F2163 /* LogPreviewPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0FA4C217D5C70AF965B38 /* LogPreviewPanel.swift */; };
 		3417E9F57050B6AA4CD95755 /* XORDecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B78C974A1DB2D28345B427 /* XORDecryptor.swift */; };
-		366D7D2F4092A7A61841878A /* LogPreviewPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */; };
+		3967F09234D233CBCE07F01B /* GlassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD66758EC66431BFFC81439 /* GlassButton.swift */; };
+		3A4A91ED467DD9C9221862AE /* GlassEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7316BD8E0789F07E749C1C /* GlassEffect.swift */; };
 		445FD9310248D1F14FD68E53 /* ZlibDecompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25DB466F3D198234DC53015 /* ZlibDecompressor.swift */; };
-		55837A1FE48BE7C66F6E2B26 /* FileDropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED939AAB6E2E1DB078762B /* FileDropZone.swift */; };
 		7A282A8045E586BEA43CC5F8 /* MagicNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD875C0E4227426ECCF01B08 /* MagicNumber.swift */; };
 		7F3BEDC54D78261B3800CC2B /* DecoderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D6BEE2039891580B9C9FC /* DecoderState.swift */; };
-		904D8FF0501C75A9189DB909 /* project.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED26183B56F072D8F439DBBE /* project.yml */; };
-		AB859E3F1003550C09571CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */; };
-		ABD607DBD6370EF34EE21625 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */; };
+		8C7A6E9E70F1BCDF0748CAB7 /* LiquidProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F2C5B05E45D25114751FA /* LiquidProgressBar.swift */; };
 		B16BD10B8E2104A6CB8513D2 /* DecoderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8CBF88EBB2B43689C05A4 /* DecoderError.swift */; };
+		B62D2CE05D451C15B2F9ADD6 /* XLogDecoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431C8E36EFE7AC581DFE6C3 /* XLogDecoderApp.swift */; };
+		B630FC6B860FAAAD2E443F4F /* FileDropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4708C336F014A5FD7BA1506 /* FileDropZone.swift */; };
 		B793A00397626FEA56D865A0 /* LogHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A41A86E4C71964BFA9A340 /* LogHeader.swift */; };
-		B9F5110A6B53454515363FA2 /* GlassEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A937210C2A19176FE3245D19 /* GlassEffect.swift */; };
-		C3371F022B0CF3E193D96D47 /* XLogDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */; };
-		CD98171387F6AA61E8371C36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C113A8EF55F36CD1497FC1 /* ContentView.swift */; };
+		CB8B1AEA142D2B68226CCB2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65F8DB701400599E4C87E33 /* ContentView.swift */; };
+		CF028024E56EE867F37E1FBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828C0296C26F2948F300286 /* Constants.swift */; };
 		D97D709A92A6116589665942 /* HeaderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BABD1D372BD8A0741FE6C /* HeaderParser.swift */; };
-		E5F806FA019A97064C17FD7B /* XLogDecoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */; };
-		EA585DFB42686DF9B061EB94 /* GlassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */; };
-		F2A13E72B33C3BA7175FBE60 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D75FEADD051F354336811 /* Package.swift */; };
-		F7A7EF1DE5226CCC61C8B4EF /* XLogDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40248778B0DCF30F14D99B /* XLogDecoder.swift */; };
-		FEF6BEAC8FC339DC8938FE8E /* LiquidProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		009D75FEADD051F354336811 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		07E1573E48F3582787BD6A55 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		1BB0FA4C217D5C70AF965B38 /* LogPreviewPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPreviewPanel.swift; sourceTree = "<group>"; };
 		208D6BEE2039891580B9C9FC /* DecoderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderState.swift; sourceTree = "<group>"; };
 		27E8617DFF7F52200D9CA9C2 /* XLogDecoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLogDecoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		33C113A8EF55F36CD1497FC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoderApp.swift; sourceTree = "<group>"; };
-		4F40248778B0DCF30F14D99B /* XLogDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoder.swift; sourceTree = "<group>"; };
-		588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidProgressBar.swift; sourceTree = "<group>"; };
-		5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4431C8E36EFE7AC581DFE6C3 /* XLogDecoderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoderApp.swift; sourceTree = "<group>"; };
+		5CD66758EC66431BFFC81439 /* GlassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassButton.swift; sourceTree = "<group>"; };
 		5D429B37D470F123100CD040 /* TEADecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEADecryptor.swift; sourceTree = "<group>"; };
-		6433D577E70500791845C7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		68B78C974A1DB2D28345B427 /* XORDecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XORDecryptor.swift; sourceTree = "<group>"; };
-		90ED939AAB6E2E1DB078762B /* FileDropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropZone.swift; sourceTree = "<group>"; };
+		8A6F2C5B05E45D25114751FA /* LiquidProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidProgressBar.swift; sourceTree = "<group>"; };
 		A25DB466F3D198234DC53015 /* ZlibDecompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZlibDecompressor.swift; sourceTree = "<group>"; };
+		A50AE3E8403F26C49DEB1604 /* XLogDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoder.swift; sourceTree = "<group>"; };
 		A5A41A86E4C71964BFA9A340 /* LogHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeader.swift; sourceTree = "<group>"; };
-		A937210C2A19176FE3245D19 /* GlassEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassEffect.swift; sourceTree = "<group>"; };
-		AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPreviewPanel.swift; sourceTree = "<group>"; };
 		AC1BABD1D372BD8A0741FE6C /* HeaderParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderParser.swift; sourceTree = "<group>"; };
-		BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoder.swift; sourceTree = "<group>"; };
-		CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassButton.swift; sourceTree = "<group>"; };
-		D62BFE7114453A000460ADD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B4708C336F014A5FD7BA1506 /* FileDropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropZone.swift; sourceTree = "<group>"; };
+		DB7316BD8E0789F07E749C1C /* GlassEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassEffect.swift; sourceTree = "<group>"; };
 		DCB8CBF88EBB2B43689C05A4 /* DecoderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderError.swift; sourceTree = "<group>"; };
 		DD875C0E4227426ECCF01B08 /* MagicNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicNumber.swift; sourceTree = "<group>"; };
-		ED26183B56F072D8F439DBBE /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
+		E65F8DB701400599E4C87E33 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F828C0296C26F2948F300286 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -69,26 +60,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		01299EE6B5C02FE79695762A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */,
-				D62BFE7114453A000460ADD7 /* Constants.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		06D5A7EF1BB14A0947ABD142 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				90ED939AAB6E2E1DB078762B /* FileDropZone.swift */,
-				CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */,
-				588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */,
-				AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		0AE19AB7E389D44FDBBC0E45 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +68,10 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		283D1AA92372AD4596A2C1C8 /* ViewModels */ = {
+		2C814095E5B2DEB0EB66C7E2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4F40248778B0DCF30F14D99B /* XLogDecoder.swift */,
+				A50AE3E8403F26C49DEB1604 /* XLogDecoder.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -133,26 +104,44 @@
 			path = Compression;
 			sourceTree = "<group>";
 		};
-		534C2E133A53861B990F540A /* XLogDecoder */ = {
+		63BF2BAA313EBC9FC3BC429F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */,
+				07E1573E48F3582787BD6A55 /* ColorExtension.swift */,
+				F828C0296C26F2948F300286 /* Constants.swift */,
 			);
-			path = XLogDecoder;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		66A8F0B49E43A55E85C09BAC = {
 			isa = PBXGroup;
 			children = (
+				E65F8DB701400599E4C87E33 /* ContentView.swift */,
+				4431C8E36EFE7AC581DFE6C3 /* XLogDecoderApp.swift */,
 				2F8E105723BDC813CEEA0094 /* Models */,
 				008318386BF17BF3048F10AF /* Services */,
-				FB1706173937B42EB99D65A4 /* Sources */,
-				E671C1F00CE74D6C39CFBD27 /* Sources */,
-				01299EE6B5C02FE79695762A /* Utilities */,
-				283D1AA92372AD4596A2C1C8 /* ViewModels */,
-				BF12C8B40F6BEE6CB3A38FF4 /* Views */,
+				63BF2BAA313EBC9FC3BC429F /* Utilities */,
+				2C814095E5B2DEB0EB66C7E2 /* ViewModels */,
+				733E4A51CCA830EAC867AE9B /* Views */,
 				AB4FB794E99854DF8980FE2D /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		733E4A51CCA830EAC867AE9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3A3BACC07FD0DA048059720 /* Components */,
+				942A8AC3FDAB1C2130A323ED /* Modifiers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		942A8AC3FDAB1C2130A323ED /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				DB7316BD8E0789F07E749C1C /* GlassEffect.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		AB4FB794E99854DF8980FE2D /* Products */ = {
@@ -163,49 +152,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF12C8B40F6BEE6CB3A38FF4 /* Views */ = {
+		B3A3BACC07FD0DA048059720 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				06D5A7EF1BB14A0947ABD142 /* Components */,
-				E0D5BD4CD806478FA451A685 /* Modifiers */,
+				B4708C336F014A5FD7BA1506 /* FileDropZone.swift */,
+				5CD66758EC66431BFFC81439 /* GlassButton.swift */,
+				8A6F2C5B05E45D25114751FA /* LiquidProgressBar.swift */,
+				1BB0FA4C217D5C70AF965B38 /* LogPreviewPanel.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E0D5BD4CD806478FA451A685 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				A937210C2A19176FE3245D19 /* GlassEffect.swift */,
-			);
-			path = Modifiers;
-			sourceTree = "<group>";
-		};
-		E671C1F00CE74D6C39CFBD27 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */,
-				33C113A8EF55F36CD1497FC1 /* ContentView.swift */,
-				6433D577E70500791845C7B5 /* Info.plist */,
-				009D75FEADD051F354336811 /* Package.swift */,
-				ED26183B56F072D8F439DBBE /* project.yml */,
-				3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */,
-				2F8E105723BDC813CEEA0094 /* Models */,
-				008318386BF17BF3048F10AF /* Services */,
-				FB1706173937B42EB99D65A4 /* Sources */,
-				01299EE6B5C02FE79695762A /* Utilities */,
-				283D1AA92372AD4596A2C1C8 /* ViewModels */,
-				BF12C8B40F6BEE6CB3A38FF4 /* Views */,
-			);
-			name = Sources;
-			path = .;
-			sourceTree = "<group>";
-		};
-		FB1706173937B42EB99D65A4 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				534C2E133A53861B990F540A /* XLogDecoder */,
-			);
-			path = Sources;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +171,6 @@
 			buildConfigurationList = DEDEAA563AB4B43BD489F8AD /* Build configuration list for PBXNativeTarget "XLogDecoder" */;
 			buildPhases = (
 				0F6E23A0AA51D110A52D415C /* Sources */,
-				A645C265748C4BD28CB3E04F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -263,41 +217,27 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		A645C265748C4BD28CB3E04F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB859E3F1003550C09571CD7 /* Assets.xcassets in Resources */,
-				904D8FF0501C75A9189DB909 /* project.yml in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		0F6E23A0AA51D110A52D415C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABD607DBD6370EF34EE21625 /* ColorExtension.swift in Sources */,
-				1FF3BCEEA15D101B3B072DC7 /* Constants.swift in Sources */,
-				CD98171387F6AA61E8371C36 /* ContentView.swift in Sources */,
+				29F1FFE9936F69831C0D2F6F /* ColorExtension.swift in Sources */,
+				CF028024E56EE867F37E1FBD /* Constants.swift in Sources */,
+				CB8B1AEA142D2B68226CCB2C /* ContentView.swift in Sources */,
 				B16BD10B8E2104A6CB8513D2 /* DecoderError.swift in Sources */,
 				7F3BEDC54D78261B3800CC2B /* DecoderState.swift in Sources */,
-				55837A1FE48BE7C66F6E2B26 /* FileDropZone.swift in Sources */,
-				EA585DFB42686DF9B061EB94 /* GlassButton.swift in Sources */,
-				B9F5110A6B53454515363FA2 /* GlassEffect.swift in Sources */,
+				B630FC6B860FAAAD2E443F4F /* FileDropZone.swift in Sources */,
+				3967F09234D233CBCE07F01B /* GlassButton.swift in Sources */,
+				3A4A91ED467DD9C9221862AE /* GlassEffect.swift in Sources */,
 				D97D709A92A6116589665942 /* HeaderParser.swift in Sources */,
-				FEF6BEAC8FC339DC8938FE8E /* LiquidProgressBar.swift in Sources */,
+				8C7A6E9E70F1BCDF0748CAB7 /* LiquidProgressBar.swift in Sources */,
 				B793A00397626FEA56D865A0 /* LogHeader.swift in Sources */,
-				366D7D2F4092A7A61841878A /* LogPreviewPanel.swift in Sources */,
+				2C5E784E803FB940D23F2163 /* LogPreviewPanel.swift in Sources */,
 				7A282A8045E586BEA43CC5F8 /* MagicNumber.swift in Sources */,
-				F2A13E72B33C3BA7175FBE60 /* Package.swift in Sources */,
 				1961667751F64A0A83D21EFE /* TEADecryptor.swift in Sources */,
-				F7A7EF1DE5226CCC61C8B4EF /* XLogDecoder.swift in Sources */,
-				C3371F022B0CF3E193D96D47 /* XLogDecoder.swift in Sources */,
-				E5F806FA019A97064C17FD7B /* XLogDecoderApp.swift in Sources */,
+				0D5AF823F76FC1AAFE3361A4 /* XLogDecoder.swift in Sources */,
+				B62D2CE05D451C15B2F9ADD6 /* XLogDecoderApp.swift in Sources */,
 				3417E9F57050B6AA4CD95755 /* XORDecryptor.swift in Sources */,
 				445FD9310248D1F14FD68E53 /* ZlibDecompressor.swift in Sources */,
 			);
@@ -315,6 +255,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +401,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
