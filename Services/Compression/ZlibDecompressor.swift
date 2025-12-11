@@ -13,7 +13,7 @@ class ZlibDecompressor {
         
         print("🔧 Attempting raw deflate decompression...")
         print("   Input size: \(data.count) bytes")
-        print("   First 4 bytes: \(data.prefix(4).map { String(format: "%02X", $0) }.joined(separator: " "))")
+        print("   First 16 bytes: \(data.prefix(16).map { String(format: "%02X", $0) }.joined(separator: " "))")
         
         var stream = z_stream()
         var output = Data()
@@ -35,11 +35,18 @@ class ZlibDecompressor {
             
             guard status == Z_OK else {
                 print("   ❌ inflateInit2 failed with status: \(status)")
+                if let msg = stream.msg {
+                    print("   Error message: \(String(cString: msg))")
+                }
                 return false
             }
             
+            print("   ✅ inflateInit2 succeeded, starting decompression...")
+            
             // 解压缩循环
+            var iteration = 0
             repeat {
+                iteration += 1
                 let outputBufferSize = 65536
                 var outputBuffer = [UInt8](repeating: 0, count: outputBufferSize)
                 
@@ -48,21 +55,32 @@ class ZlibDecompressor {
                     stream.next_out = bufferPtr.baseAddress?.assumingMemoryBound(to: UInt8.self)
                 }
                 
+                let prevAvailIn = stream.avail_in
                 status = inflate(&stream, Z_NO_FLUSH)
+                let consumedBytes = prevAvailIn - stream.avail_in
+                
+                print("   Iteration \(iteration): consumed \(consumedBytes) bytes, status: \(status)")
                 
                 if status != Z_OK && status != Z_STREAM_END {
                     print("   ❌ inflate failed with status: \(status)")
+                    if let msg = stream.msg {
+                        print("   Error message: \(String(cString: msg))")
+                    }
+                    print("   avail_in: \(stream.avail_in), avail_out: \(stream.avail_out)")
                     inflateEnd(&stream)
                     return false
                 }
                 
                 let have = outputBufferSize - Int(stream.avail_out)
-                output.append(contentsOf: outputBuffer.prefix(have))
+                if have > 0 {
+                    output.append(contentsOf: outputBuffer.prefix(have))
+                    print("   Produced \(have) bytes, total output: \(output.count)")
+                }
                 
-            } while status != Z_STREAM_END
+            } while status != Z_STREAM_END && stream.avail_in > 0
             
             inflateEnd(&stream)
-            return true
+            return status == Z_STREAM_END
         }
         
         guard result && status == Z_STREAM_END else {
