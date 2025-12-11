@@ -48,12 +48,12 @@ struct LogPreviewPanel: View {
         }
         .background(
             RoundedRectangle(cornerRadius: CornerRadius.large)
-                .fill(Color(red: 0.13, green: 0.15, blue: 0.19))
+                .fill(Color(red: 0.17, green: 0.19, blue: 0.22))
         )
         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.large))
         .overlay(
             RoundedRectangle(cornerRadius: CornerRadius.large)
-                .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+                .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
         )
     }
 }
