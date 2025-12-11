@@ -2,7 +2,7 @@
 
 A modern macOS application for decrypting xlog files with a beautiful glassmorphism UI.
 
-![XLog Decoder](../../../.gemini/antigravity/brain/a6acd390-73de-479c-8fd5-208ee19e76d9/xlog_decoder_complete_state_1765422988960.png)
+![XLog Decoder](screenshot.png)
 
 ## Features
 
