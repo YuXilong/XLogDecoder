@@ -20,6 +20,7 @@ class XLogDecoder: ObservableObject {
     private let decompressor = ZlibDecompressor()
     private let xorDecryptor = XORDecryptor()
     private let teaDecryptor = TEADecryptor()
+    private let zipExtractor = ZipExtractor()
     
     private var startTime: Date?
     private var lastSequence: UInt16 = 0
@@ -28,6 +29,86 @@ class XLogDecoder: ObservableObject {
         startTime = Date()
         lastSequence = 0
         
+        // 检查是否是ZIP文件
+        if url.pathExtension.lowercased() == "zip" {
+            await decodeZipFile(at: url)
+        } else {
+            await decodeSingleFile(at: url)
+        }
+    }
+    
+    /// 解压并解码ZIP中的所有xlog文件
+    private func decodeZipFile(at url: URL) async {
+        var tempDir: URL?
+        
+        do {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            let fileSize = fileAttributes[.size] as? Int64 ?? 0
+            
+            state = .decoding(fileName: url.lastPathComponent, fileSize: fileSize)
+            status = "Extracting ZIP file..."
+            
+            // 解压ZIP
+            tempDir = try zipExtractor.extract(zipURL: url)
+            
+            // 查找所有xlog文件
+            let xlogFiles = try zipExtractor.findXLogFiles(in: tempDir!)
+            
+            if xlogFiles.isEmpty {
+                throw DecoderError.noXLogFilesFound
+            }
+            
+            status = "Found \(xlogFiles.count) xlog files, decoding..."
+            
+            var processedCount = 0
+            var lastOutputURL: URL?
+            var totalOutputSize: Int64 = 0
+            
+            // 解码每个xlog文件
+            for xlogURL in xlogFiles {
+                status = "Decoding \(xlogURL.lastPathComponent) (\(processedCount + 1)/\(xlogFiles.count))..."
+                
+                if let outputURL = try await decodeSingleXLogFile(at: xlogURL, outputDir: url.deletingLastPathComponent()) {
+                    lastOutputURL = outputURL
+                    if let attrs = try? FileManager.default.attributesOfItem(atPath: outputURL.path),
+                       let size = attrs[.size] as? Int64 {
+                        totalOutputSize += size
+                    }
+                }
+                
+                processedCount += 1
+                updateProgress(Double(processedCount) / Double(xlogFiles.count))
+            }
+            
+            // 清理临时目录
+            if let dir = tempDir {
+                zipExtractor.cleanup(directory: dir)
+            }
+            
+            decodedFileURL = lastOutputURL
+            
+            let duration = Date().timeIntervalSince(startTime ?? Date())
+            state = .complete(
+                fileName: "\(xlogFiles.count) files from \(url.lastPathComponent)",
+                inputSize: fileSize,
+                outputSize: totalOutputSize,
+                duration: duration
+            )
+            status = "Complete! Decoded \(xlogFiles.count) files"
+            progress = 1.0
+            
+        } catch {
+            // 清理临时目录
+            if let dir = tempDir {
+                zipExtractor.cleanup(directory: dir)
+            }
+            state = .error(error.localizedDescription)
+            status = "Error: \(error.localizedDescription)"
+        }
+    }
+    
+    /// 解码单个xlog文件
+    private func decodeSingleFile(at url: URL) async {
         do {
             // 获取文件信息
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: url.path)
@@ -36,9 +117,34 @@ class XLogDecoder: ObservableObject {
             state = .decoding(fileName: url.lastPathComponent, fileSize: fileSize)
             status = "Reading file..."
             
-            // 读取文件
-            let data = try Data(contentsOf: url)
-            print("📁 File loaded: \(data.count) bytes")
+            if let outputURL = try await decodeSingleXLogFile(at: url, outputDir: url.deletingLastPathComponent()) {
+                decodedFileURL = outputURL
+                
+                let duration = Date().timeIntervalSince(startTime ?? Date())
+                let outputAttrs = try FileManager.default.attributesOfItem(atPath: outputURL.path)
+                let outputSize = outputAttrs[.size] as? Int64 ?? 0
+                
+                state = .complete(
+                    fileName: url.lastPathComponent,
+                    inputSize: fileSize,
+                    outputSize: outputSize,
+                    duration: duration
+                )
+                status = "Complete!"
+                progress = 1.0
+            }
+            
+        } catch {
+            state = .error(error.localizedDescription)
+            status = "Error: \(error.localizedDescription)"
+        }
+    }
+    
+    /// 解码单个xlog文件并返回输出URL
+    private func decodeSingleXLogFile(at url: URL, outputDir: URL) async throws -> URL? {
+        // 读取文件
+        let data = try Data(contentsOf: url)
+        print("📁 File loaded: \(data.count) bytes")
             
             status = "Finding log start position..."
             
@@ -70,31 +176,42 @@ class XLogDecoder: ObservableObject {
                 offset = nextOffset
             }
             
-            // 保存输出文件
-            status = "Saving output..."
-            let outputURL = url.deletingPathExtension().appendingPathExtension("xlog.log")
-            try output.write(to: outputURL)
-            
-            // 更新预览 (只显示前10KB)
-            let previewData = output.prefix(10240)
-            logPreview = String(data: previewData, encoding: .utf8) ?? "Unable to preview (binary data)"
-            
-            decodedFileURL = outputURL
-            
-            let duration = Date().timeIntervalSince(startTime ?? Date())
-            state = .complete(
-                fileName: url.lastPathComponent,
-                inputSize: fileSize,
-                outputSize: Int64(output.count),
-                duration: duration
-            )
-            status = "Complete!"
-            progress = 1.0
-            
-        } catch {
-            state = .error(error.localizedDescription)
-            status = "Error: \(error.localizedDescription)"
+        // 保存输出文件
+        status = "Saving output..."
+        
+        // 将输出转换为字符串用于UID提取和预览
+        let outputString = String(data: output, encoding: .utf8) ?? ""
+        
+        // 提取UID并构建输出文件名
+        var outputName = url.deletingPathExtension().lastPathComponent
+        if let uid = extractUID(from: outputString) {
+            outputName += "_\(uid)"
+            print("📋 Extracted UID: \(uid)")
         }
+        
+        let outputURL = outputDir
+            .appendingPathComponent(outputName)
+            .appendingPathExtension("log")
+        try output.write(to: outputURL)
+        print("💾 Saved to: \(outputURL.path)")
+        
+        // 更新预览 (只显示前10KB)
+        let previewData = output.prefix(10240)
+        logPreview = String(data: previewData, encoding: .utf8) ?? "Unable to preview (binary data)"
+        
+        return outputURL
+    }
+    
+    /// 从日志内容中提取UID
+    private func extractUID(from content: String) -> String? {
+        // 匹配 _uid=数字 格式
+        let pattern = "_uid=(\\d+)"
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []),
+              let match = regex.firstMatch(in: content, options: [], range: NSRange(content.startIndex..., in: content)),
+              let range = Range(match.range(at: 1), in: content) else {
+            return nil
+        }
+        return String(content[range])
     }
     
     private func decodeBuffer(buffer: Data, offset: Int, output: inout Data) async throws -> Int? {

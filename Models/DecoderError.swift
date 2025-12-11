@@ -15,6 +15,7 @@ enum DecoderError: LocalizedError {
     case decryptionFailed
     case fileReadError
     case fileWriteError
+    case noXLogFilesFound
     
     var errorDescription: String? {
         switch self {
@@ -36,6 +37,8 @@ enum DecoderError: LocalizedError {
             return "Failed to read file"
         case .fileWriteError:
             return "Failed to write output file"
+        case .noXLogFilesFound:
+            return "No .xlog files found in ZIP archive"
         }
     }
 }

@@ -157,8 +157,9 @@ struct FileDropZone: View {
                 return 
             }
             
-            // 验证文件扩展名
-            guard url.pathExtension == "xlog" else {
+            // 验证文件扩展名 (支持 xlog 和 zip)
+            let validExtensions = ["xlog", "zip"]
+            guard validExtensions.contains(url.pathExtension.lowercased()) else {
                 print("Invalid file type: \(url.pathExtension)")
                 return
             }
@@ -174,7 +175,10 @@ struct FileDropZone: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
-        panel.allowedContentTypes = [UTType(filenameExtension: "xlog")!]
+        panel.allowedContentTypes = [
+            UTType(filenameExtension: "xlog")!,
+            UTType(filenameExtension: "zip")!
+        ]
         
         if panel.runModal() == .OK, let url = panel.url {
             onFileDrop(url)
