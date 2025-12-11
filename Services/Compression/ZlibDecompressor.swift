@@ -77,7 +77,7 @@ class ZlibDecompressor {
                     print("   Produced \(have) bytes, total output: \(output.count)")
                 }
                 
-            } while status != Z_STREAM_END && stream.avail_in > 0
+            } while status != Z_STREAM_END  // 继续直到流结束,不检查avail_in
             
             inflateEnd(&stream)
             return status == Z_STREAM_END
