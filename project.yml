@@ -22,10 +22,8 @@ targets:
       - Views
       - Services
       - Utilities
-
-    resources:
       - path: Assets.xcassets
-        type: folder
+        buildPhase: resources
 
     settings:
       PRODUCT_NAME: XLogDecoder
