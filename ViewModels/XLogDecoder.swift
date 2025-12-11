@@ -38,13 +38,16 @@ class XLogDecoder: ObservableObject {
             
             // 读取文件
             let data = try Data(contentsOf: url)
+            print("📁 File loaded: \(data.count) bytes")
             
             status = "Finding log start position..."
             
             // 查找起始位置
             guard let startPos = headerParser.findLogStartPosition(in: data) else {
+                print("❌ Failed to find log start position")
                 throw DecoderError.invalidFormat
             }
+            print("✅ Found log start at offset: \(startPos)")
             
             status = "Decoding..."
             
@@ -109,6 +112,8 @@ class XLogDecoder: ObservableObject {
         
         // 解析header
         let header = try headerParser.parse(from: buffer, at: offset)
+        print("📋 Header parsed - Magic: 0x\(String(format: "%02X", header.magic.rawValue)), Seq: \(header.sequence), Length: \(header.length)")
+        print("   Needs decryption: \(header.magic.needsDecryption), Needs decompression: \(header.magic.needsDecompression)")
         
         // 检查序列号
         if header.sequence != 0 && header.sequence != 1 && lastSequence != 0 && header.sequence != (lastSequence + 1) {
@@ -124,15 +129,28 @@ class XLogDecoder: ObservableObject {
         let dataStart = offset + header.headerLength
         let dataEnd = dataStart + Int(header.length)
         var logData = buffer[dataStart..<dataEnd]
+        print("📦 Extracted \(logData.count) bytes of data (offset: \(dataStart)-\(dataEnd))")
         
         // 解密
         if header.magic.needsDecryption {
+            print("🔓 Decrypting with \(header.magic.decryptionType)...")
+            let beforeSize = logData.count
             logData = try decryptData(logData, header: header)
+            print("   Decrypted: \(beforeSize) -> \(logData.count) bytes")
         }
         
         // 解压
         if header.magic.needsDecompression {
-            logData = try decompressor.decompress(logData)
+            print("📤 Decompressing \(logData.count) bytes...")
+            let beforeSize = logData.count
+            do {
+                logData = try decompressor.decompress(logData)
+                print("   ✅ Decompressed: \(beforeSize) -> \(logData.count) bytes")
+            } catch {
+                print("   ❌ Decompression failed: \(error)")
+                print("   First 16 bytes: \(logData.prefix(16).map { String(format: "%02X", $0) }.joined(separator: " "))")
+                throw error
+            }
         }
         
         output.append(logData)
