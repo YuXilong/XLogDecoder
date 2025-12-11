@@ -56,19 +56,16 @@ class ZlibDecompressor {
                 }
                 
                 let prevAvailIn = stream.avail_in
-                // 当没有更多输入数据时使用Z_FINISH,否则使用Z_NO_FLUSH
-                let flushFlag = (stream.avail_in == 0) ? Z_FINISH : Z_NO_FLUSH
-                status = inflate(&stream, flushFlag)
+                status = inflate(&stream, Z_NO_FLUSH)
                 let consumedBytes = prevAvailIn - stream.avail_in
                 
-                print("   Iteration \(iteration): consumed \(consumedBytes) bytes, status: \(status), flush: \(flushFlag == Z_FINISH ? "FINISH" : "NO_FLUSH")")
+                print("   Iteration \(iteration): consumed \(consumedBytes) bytes, status: \(status)")
                 
                 if status != Z_OK && status != Z_STREAM_END {
                     print("   ❌ inflate failed with status: \(status)")
                     if let msg = stream.msg {
                         print("   Error message: \(String(cString: msg))")
                     }
-                    print("   avail_in: \(stream.avail_in), avail_out: \(stream.avail_out)")
                     inflateEnd(&stream)
                     return false
                 }
@@ -79,14 +76,18 @@ class ZlibDecompressor {
                     print("   Produced \(have) bytes, total output: \(output.count)")
                 }
                 
-            } while status != Z_STREAM_END  // 继续直到流结束,不检查avail_in
+                // 如果输入全部消耗,跳出循环
+                if stream.avail_in == 0 {
+                    print("   ✅ All input consumed, stopping decompression")
+                    break
+                }
+                
+            } while status != Z_STREAM_END
             
             inflateEnd(&stream)
             
-            // 如果输入数据全部消耗且状态为Z_OK,也视为成功
-            // (某些压缩数据可能不会明确返回Z_STREAM_END)
-            let success = (status == Z_STREAM_END) || (status == Z_OK && stream.avail_in == 0 && output.count > 0)
-            return success
+            // 成功条件:产生了输出数据
+            return output.count > 0
         }
         
         guard result else {
