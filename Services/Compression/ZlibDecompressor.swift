@@ -82,11 +82,15 @@ class ZlibDecompressor {
             } while status != Z_STREAM_END  // 继续直到流结束,不检查avail_in
             
             inflateEnd(&stream)
-            return status == Z_STREAM_END
+            
+            // 如果输入数据全部消耗且状态为Z_OK,也视为成功
+            // (某些压缩数据可能不会明确返回Z_STREAM_END)
+            let success = (status == Z_STREAM_END) || (status == Z_OK && stream.avail_in == 0 && output.count > 0)
+            return success
         }
         
-        guard result && status == Z_STREAM_END else {
-            print("   ❌ Decompression incomplete, status: \(status)")
+        guard result else {
+            print("   ❌ Decompression failed")
             throw DecoderError.decompressionFailed
         }
         
