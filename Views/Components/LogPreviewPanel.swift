@@ -9,6 +9,8 @@ struct LogPreviewPanel: View {
     let logContent: String
     let state: DecoderState
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // 标题栏
@@ -20,12 +22,14 @@ struct LogPreviewPanel: View {
                 Spacer()
             }
             .padding()
-            .background(Color.white.opacity(0.03))
+            .background(
+                colorScheme == .dark 
+                    ? Color.white.opacity(0.03)
+                    : Color.black.opacity(0.03)
+            )
             
             // 分隔线
-            Rectangle()
-                .fill(Color.white.opacity(0.08))
-                .frame(height: 1)
+            Divider()
             
             // 日志内容
             ScrollView {
@@ -40,6 +44,7 @@ struct LogPreviewPanel: View {
                     // 有内容状态
                     Text(logContent.isEmpty ? "Decoding..." : logContent)
                         .font(.system(size: 13, design: .monospaced))
+                        .foregroundColor(.primary)
                         .textSelection(.enabled)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
@@ -48,12 +53,25 @@ struct LogPreviewPanel: View {
         }
         .background(
             RoundedRectangle(cornerRadius: CornerRadius.large)
-                .fill(Color(red: 0.17, green: 0.19, blue: 0.22))
+                .fill(.regularMaterial)
         )
         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.large))
         .overlay(
             RoundedRectangle(cornerRadius: CornerRadius.large)
-                .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
+                .strokeBorder(
+                    colorScheme == .dark
+                        ? Color.white.opacity(0.1)
+                        : Color.black.opacity(0.1),
+                    lineWidth: 1
+                )
+        )
+        .shadow(
+            color: colorScheme == .dark 
+                ? .black.opacity(0.3)
+                : .black.opacity(0.1),
+            radius: 8,
+            x: 0,
+            y: 4
         )
     }
 }
