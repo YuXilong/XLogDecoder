@@ -129,3 +129,10 @@ Temporary Items
 
 # Project specific
 create_project.sh
+generate_icons.sh
+icon_1024x1024.png
+AppIcon.icns
+AppIcon.appiconset/
+
+# Xcode project (keep it in git)
+# XLogDecoder.xcodeproj

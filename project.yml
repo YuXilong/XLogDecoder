@@ -1,0 +1,45 @@
+name: XLogDecoder
+options:
+  bundleIdPrefix: com.yuxilong
+  deploymentTarget:
+    macOS: "14.0"
+  developmentLanguage: en
+
+settings:
+  MARKETING_VERSION: "1.0.0"
+  CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  XLogDecoder:
+    type: application
+    platform: macOS
+
+    sources:
+      - path: .
+        name: Sources
+        excludes:
+          - "*.md"
+          - "*.sh"
+          - ".git*"
+          - "AppIcon.appiconset"
+          - "icon_1024x1024.png"
+          - "AppIcon.icns"
+
+    settings:
+      PRODUCT_NAME: XLogDecoder
+      PRODUCT_BUNDLE_IDENTIFIER: com.yuxilong.XLogDecoder
+      INFOPLIST_FILE: Info.plist
+      MACOSX_DEPLOYMENT_TARGET: "14.0"
+      SWIFT_VERSION: "5.9"
+      ENABLE_PREVIEWS: YES
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      DEVELOPMENT_TEAM: ""
+      CODE_SIGN_STYLE: Automatic
+      CODE_SIGN_IDENTITY: "-"
+      COMBINE_HIDPI_IMAGES: YES
+
+    scheme:
+      testTargets: []
+      gatherCoverageData: false
+
+    dependencies: []

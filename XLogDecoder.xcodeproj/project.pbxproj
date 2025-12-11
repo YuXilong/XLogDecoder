@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1961667751F64A0A83D21EFE /* TEADecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D429B37D470F123100CD040 /* TEADecryptor.swift */; };
+		1FF3BCEEA15D101B3B072DC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62BFE7114453A000460ADD7 /* Constants.swift */; };
+		3417E9F57050B6AA4CD95755 /* XORDecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B78C974A1DB2D28345B427 /* XORDecryptor.swift */; };
+		366D7D2F4092A7A61841878A /* LogPreviewPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */; };
+		445FD9310248D1F14FD68E53 /* ZlibDecompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25DB466F3D198234DC53015 /* ZlibDecompressor.swift */; };
+		55837A1FE48BE7C66F6E2B26 /* FileDropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED939AAB6E2E1DB078762B /* FileDropZone.swift */; };
+		7A282A8045E586BEA43CC5F8 /* MagicNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD875C0E4227426ECCF01B08 /* MagicNumber.swift */; };
+		7F3BEDC54D78261B3800CC2B /* DecoderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D6BEE2039891580B9C9FC /* DecoderState.swift */; };
+		904D8FF0501C75A9189DB909 /* project.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED26183B56F072D8F439DBBE /* project.yml */; };
+		AB859E3F1003550C09571CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */; };
+		ABD607DBD6370EF34EE21625 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */; };
+		B16BD10B8E2104A6CB8513D2 /* DecoderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8CBF88EBB2B43689C05A4 /* DecoderError.swift */; };
+		B793A00397626FEA56D865A0 /* LogHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A41A86E4C71964BFA9A340 /* LogHeader.swift */; };
+		B9F5110A6B53454515363FA2 /* GlassEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A937210C2A19176FE3245D19 /* GlassEffect.swift */; };
+		C3371F022B0CF3E193D96D47 /* XLogDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */; };
+		CD98171387F6AA61E8371C36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C113A8EF55F36CD1497FC1 /* ContentView.swift */; };
+		D97D709A92A6116589665942 /* HeaderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BABD1D372BD8A0741FE6C /* HeaderParser.swift */; };
+		E5F806FA019A97064C17FD7B /* XLogDecoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */; };
+		EA585DFB42686DF9B061EB94 /* GlassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */; };
+		F2A13E72B33C3BA7175FBE60 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D75FEADD051F354336811 /* Package.swift */; };
+		F7A7EF1DE5226CCC61C8B4EF /* XLogDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40248778B0DCF30F14D99B /* XLogDecoder.swift */; };
+		FEF6BEAC8FC339DC8938FE8E /* LiquidProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		009D75FEADD051F354336811 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		208D6BEE2039891580B9C9FC /* DecoderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderState.swift; sourceTree = "<group>"; };
+		27E8617DFF7F52200D9CA9C2 /* XLogDecoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLogDecoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C113A8EF55F36CD1497FC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoderApp.swift; sourceTree = "<group>"; };
+		4F40248778B0DCF30F14D99B /* XLogDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoder.swift; sourceTree = "<group>"; };
+		588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidProgressBar.swift; sourceTree = "<group>"; };
+		5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5D429B37D470F123100CD040 /* TEADecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEADecryptor.swift; sourceTree = "<group>"; };
+		6433D577E70500791845C7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		68B78C974A1DB2D28345B427 /* XORDecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XORDecryptor.swift; sourceTree = "<group>"; };
+		90ED939AAB6E2E1DB078762B /* FileDropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropZone.swift; sourceTree = "<group>"; };
+		A25DB466F3D198234DC53015 /* ZlibDecompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZlibDecompressor.swift; sourceTree = "<group>"; };
+		A5A41A86E4C71964BFA9A340 /* LogHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeader.swift; sourceTree = "<group>"; };
+		A937210C2A19176FE3245D19 /* GlassEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassEffect.swift; sourceTree = "<group>"; };
+		AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPreviewPanel.swift; sourceTree = "<group>"; };
+		AC1BABD1D372BD8A0741FE6C /* HeaderParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderParser.swift; sourceTree = "<group>"; };
+		BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogDecoder.swift; sourceTree = "<group>"; };
+		CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassButton.swift; sourceTree = "<group>"; };
+		D62BFE7114453A000460ADD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DCB8CBF88EBB2B43689C05A4 /* DecoderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderError.swift; sourceTree = "<group>"; };
+		DD875C0E4227426ECCF01B08 /* MagicNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicNumber.swift; sourceTree = "<group>"; };
+		ED26183B56F072D8F439DBBE /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		008318386BF17BF3048F10AF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4CE81C85A4DA0A7D417D5D38 /* Compression */,
+				3ADD9633BB9859FB8A68C388 /* Decryption */,
+				0AE19AB7E389D44FDBBC0E45 /* Parser */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		01299EE6B5C02FE79695762A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				349D84A6F72D99C8C4C790E4 /* ColorExtension.swift */,
+				D62BFE7114453A000460ADD7 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		06D5A7EF1BB14A0947ABD142 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				90ED939AAB6E2E1DB078762B /* FileDropZone.swift */,
+				CF94ED97AED6D7A7AC905E3B /* GlassButton.swift */,
+				588ED7476BB42DEAA0A42FB6 /* LiquidProgressBar.swift */,
+				AA88EE7AEE68754D85164C55 /* LogPreviewPanel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0AE19AB7E389D44FDBBC0E45 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				AC1BABD1D372BD8A0741FE6C /* HeaderParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		283D1AA92372AD4596A2C1C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F40248778B0DCF30F14D99B /* XLogDecoder.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2F8E105723BDC813CEEA0094 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCB8CBF88EBB2B43689C05A4 /* DecoderError.swift */,
+				208D6BEE2039891580B9C9FC /* DecoderState.swift */,
+				A5A41A86E4C71964BFA9A340 /* LogHeader.swift */,
+				DD875C0E4227426ECCF01B08 /* MagicNumber.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3ADD9633BB9859FB8A68C388 /* Decryption */ = {
+			isa = PBXGroup;
+			children = (
+				5D429B37D470F123100CD040 /* TEADecryptor.swift */,
+				68B78C974A1DB2D28345B427 /* XORDecryptor.swift */,
+			);
+			path = Decryption;
+			sourceTree = "<group>";
+		};
+		4CE81C85A4DA0A7D417D5D38 /* Compression */ = {
+			isa = PBXGroup;
+			children = (
+				A25DB466F3D198234DC53015 /* ZlibDecompressor.swift */,
+			);
+			path = Compression;
+			sourceTree = "<group>";
+		};
+		534C2E133A53861B990F540A /* XLogDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				BD66E662E6ED066F1D64CFB1 /* XLogDecoder.swift */,
+			);
+			path = XLogDecoder;
+			sourceTree = "<group>";
+		};
+		66A8F0B49E43A55E85C09BAC = {
+			isa = PBXGroup;
+			children = (
+				2F8E105723BDC813CEEA0094 /* Models */,
+				008318386BF17BF3048F10AF /* Services */,
+				FB1706173937B42EB99D65A4 /* Sources */,
+				E671C1F00CE74D6C39CFBD27 /* Sources */,
+				01299EE6B5C02FE79695762A /* Utilities */,
+				283D1AA92372AD4596A2C1C8 /* ViewModels */,
+				BF12C8B40F6BEE6CB3A38FF4 /* Views */,
+				AB4FB794E99854DF8980FE2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB4FB794E99854DF8980FE2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E8617DFF7F52200D9CA9C2 /* XLogDecoder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF12C8B40F6BEE6CB3A38FF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06D5A7EF1BB14A0947ABD142 /* Components */,
+				E0D5BD4CD806478FA451A685 /* Modifiers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E0D5BD4CD806478FA451A685 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				A937210C2A19176FE3245D19 /* GlassEffect.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		E671C1F00CE74D6C39CFBD27 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E90017BBADDB0B3CC5F2C /* Assets.xcassets */,
+				33C113A8EF55F36CD1497FC1 /* ContentView.swift */,
+				6433D577E70500791845C7B5 /* Info.plist */,
+				009D75FEADD051F354336811 /* Package.swift */,
+				ED26183B56F072D8F439DBBE /* project.yml */,
+				3D731297C8BA1AA30A3CF2D9 /* XLogDecoderApp.swift */,
+				2F8E105723BDC813CEEA0094 /* Models */,
+				008318386BF17BF3048F10AF /* Services */,
+				FB1706173937B42EB99D65A4 /* Sources */,
+				01299EE6B5C02FE79695762A /* Utilities */,
+				283D1AA92372AD4596A2C1C8 /* ViewModels */,
+				BF12C8B40F6BEE6CB3A38FF4 /* Views */,
+			);
+			name = Sources;
+			path = .;
+			sourceTree = "<group>";
+		};
+		FB1706173937B42EB99D65A4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				534C2E133A53861B990F540A /* XLogDecoder */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC6F8AF751DBA6CB19DBB1AD /* XLogDecoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEDEAA563AB4B43BD489F8AD /* Build configuration list for PBXNativeTarget "XLogDecoder" */;
+			buildPhases = (
+				0F6E23A0AA51D110A52D415C /* Sources */,
+				A645C265748C4BD28CB3E04F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XLogDecoder;
+			packageProductDependencies = (
+			);
+			productName = XLogDecoder;
+			productReference = 27E8617DFF7F52200D9CA9C2 /* XLogDecoder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8B83F2897785E2A4F0FD09A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					BC6F8AF751DBA6CB19DBB1AD = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC1E2640371BC37CD3625388 /* Build configuration list for PBXProject "XLogDecoder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 66A8F0B49E43A55E85C09BAC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC6F8AF751DBA6CB19DBB1AD /* XLogDecoder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A645C265748C4BD28CB3E04F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB859E3F1003550C09571CD7 /* Assets.xcassets in Resources */,
+				904D8FF0501C75A9189DB909 /* project.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F6E23A0AA51D110A52D415C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD607DBD6370EF34EE21625 /* ColorExtension.swift in Sources */,
+				1FF3BCEEA15D101B3B072DC7 /* Constants.swift in Sources */,
+				CD98171387F6AA61E8371C36 /* ContentView.swift in Sources */,
+				B16BD10B8E2104A6CB8513D2 /* DecoderError.swift in Sources */,
+				7F3BEDC54D78261B3800CC2B /* DecoderState.swift in Sources */,
+				55837A1FE48BE7C66F6E2B26 /* FileDropZone.swift in Sources */,
+				EA585DFB42686DF9B061EB94 /* GlassButton.swift in Sources */,
+				B9F5110A6B53454515363FA2 /* GlassEffect.swift in Sources */,
+				D97D709A92A6116589665942 /* HeaderParser.swift in Sources */,
+				FEF6BEAC8FC339DC8938FE8E /* LiquidProgressBar.swift in Sources */,
+				B793A00397626FEA56D865A0 /* LogHeader.swift in Sources */,
+				366D7D2F4092A7A61841878A /* LogPreviewPanel.swift in Sources */,
+				7A282A8045E586BEA43CC5F8 /* MagicNumber.swift in Sources */,
+				F2A13E72B33C3BA7175FBE60 /* Package.swift in Sources */,
+				1961667751F64A0A83D21EFE /* TEADecryptor.swift in Sources */,
+				F7A7EF1DE5226CCC61C8B4EF /* XLogDecoder.swift in Sources */,
+				C3371F022B0CF3E193D96D47 /* XLogDecoder.swift in Sources */,
+				E5F806FA019A97064C17FD7B /* XLogDecoderApp.swift in Sources */,
+				3417E9F57050B6AA4CD95755 /* XORDecryptor.swift in Sources */,
+				445FD9310248D1F14FD68E53 /* ZlibDecompressor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2742649179CA22F39E1172A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuxilong.XLogDecoder;
+				PRODUCT_NAME = XLogDecoder;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		9AE5CEFBF4AE94B5C700FBAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B11E8BD559C3857900C32BC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E481C99B795917F8565AB99B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuxilong.XLogDecoder;
+				PRODUCT_NAME = XLogDecoder;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC1E2640371BC37CD3625388 /* Build configuration list for PBXProject "XLogDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AE5CEFBF4AE94B5C700FBAD /* Debug */,
+				B11E8BD559C3857900C32BC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DEDEAA563AB4B43BD489F8AD /* Build configuration list for PBXNativeTarget "XLogDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2742649179CA22F39E1172A4 /* Debug */,
+				E481C99B795917F8565AB99B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8B83F2897785E2A4F0FD09A /* Project object */;
+}
