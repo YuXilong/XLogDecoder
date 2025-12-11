@@ -105,20 +105,68 @@ struct FileDropZone: View {
     private func handleDrop(_ providers: [NSItemProvider]) -> Bool {
         guard let provider = providers.first else { return false }
         
-        provider.loadDataRepresentation(forTypeIdentifier: UTType.fileURL.identifier) { data, error in
-            guard let data = data,
-                  let path = String(data: data, encoding: .utf8),
-                  let url = URL(string: path) else { return }
-            
-            // 验证文件扩展名
-            guard url.pathExtension == "xlog" else { return }
-            
-            DispatchQueue.main.async {
-                onFileDrop(url)
-            }
+        // 尝试多种类型标识符
+        let fileURLIdentifier = UTType.fileURL.identifier
+        let dataIdentifier = UTType.data.identifier
+        
+        let hasFileURL = provider.hasItemConformingToTypeIdentifier(fileURLIdentifier)
+        let hasData = provider.hasItemConformingToTypeIdentifier(dataIdentifier)
+        
+        // 优先尝试 file URL
+        if hasFileURL {
+            loadFileURL(from: provider, typeIdentifier: fileURLIdentifier)
+            return true
         }
         
-        return true
+        // 如果没有 file URL，尝试 data 类型
+        if hasData {
+            loadFileURL(from: provider, typeIdentifier: dataIdentifier)
+            return true
+        }
+        
+        return false
+    }
+    
+    private func loadFileURL(from provider: NSItemProvider, typeIdentifier: String) {
+        // 使用 loadItem 直接获取 URL，避免文件被复制到临时目录
+        provider.loadItem(forTypeIdentifier: typeIdentifier, options: nil) { (item, error) in
+            guard error == nil else { 
+                print("Error loading item: \(error?.localizedDescription ?? "unknown")")
+                return 
+            }
+            
+            var finalURL: URL?
+            
+            // item 可能是 URL、Data 或其他类型
+            if let url = item as? URL {
+                // 直接是 URL
+                finalURL = url
+            } else if let data = item as? Data {
+                // 如果是 Data，尝试解码为 URL 字符串
+                if let urlString = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) {
+                    if urlString.hasPrefix("file://") {
+                        finalURL = URL(string: urlString)
+                    } else {
+                        finalURL = URL(fileURLWithPath: urlString)
+                    }
+                }
+            }
+            
+            guard let url = finalURL else { 
+                print("Failed to get URL from item")
+                return 
+            }
+            
+            // 验证文件扩展名
+            guard url.pathExtension == "xlog" else {
+                print("Invalid file type: \(url.pathExtension)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.onFileDrop(url)
+            }
+        }
     }
     
     private func selectFile() {
