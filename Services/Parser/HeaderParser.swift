@@ -25,10 +25,8 @@ class HeaderParser {
             throw DecoderError.headerTooShort
         }
         
-        // 解析序列号 (2字节)
-        let sequence = buffer.withUnsafeBytes { ptr in
-            ptr.load(fromByteOffset: offset + 1, as: UInt16.self)
-        }
+        // 解析序列号 (2字节) - 安全读取
+        let sequence = readUInt16(from: buffer, at: offset + 1)
         
         // 解析开始小时 (1字节)
         let beginHour = buffer[offset + 3]
@@ -36,10 +34,8 @@ class HeaderParser {
         // 解析结束小时 (1字节)
         let endHour = buffer[offset + 4]
         
-        // 解析长度 (4字节)
-        let length = buffer.withUnsafeBytes { ptr in
-            ptr.load(fromByteOffset: offset + 5, as: UInt32.self)
-        }
+        // 解析长度 (4字节) - 安全读取
+        let length = readUInt32(from: buffer, at: offset + 5)
         
         // 解析加密密钥 (如果有)
         var cryptKey: Data? = nil
@@ -57,6 +53,24 @@ class HeaderParser {
             length: length,
             cryptKey: cryptKey
         )
+    }
+    
+    // 安全读取UInt16 (小端序)
+    private func readUInt16(from data: Data, at offset: Int) -> UInt16 {
+        guard offset + 2 <= data.count else { return 0 }
+        let byte0 = UInt16(data[offset])
+        let byte1 = UInt16(data[offset + 1])
+        return byte0 | (byte1 << 8)
+    }
+    
+    // 安全读取UInt32 (小端序)
+    private func readUInt32(from data: Data, at offset: Int) -> UInt32 {
+        guard offset + 4 <= data.count else { return 0 }
+        let byte0 = UInt32(data[offset])
+        let byte1 = UInt32(data[offset + 1])
+        let byte2 = UInt32(data[offset + 2])
+        let byte3 = UInt32(data[offset + 3])
+        return byte0 | (byte1 << 8) | (byte2 << 16) | (byte3 << 24)
     }
     
     func isValidLogBuffer(buffer: Data, offset: Int, count: Int = 1) -> Bool {
@@ -77,10 +91,8 @@ class HeaderParser {
             return false
         }
         
-        // 解析长度
-        let length = buffer.withUnsafeBytes { ptr in
-            ptr.load(fromByteOffset: offset + 5, as: UInt32.self)
-        }
+        // 解析长度 - 安全读取
+        let length = readUInt32(from: buffer, at: offset + 5)
         
         // 检查总长度
         guard offset + headerLen + Int(length) + 1 <= buffer.count else {
