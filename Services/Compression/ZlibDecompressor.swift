@@ -56,10 +56,12 @@ class ZlibDecompressor {
                 }
                 
                 let prevAvailIn = stream.avail_in
-                status = inflate(&stream, Z_NO_FLUSH)
+                // 当没有更多输入数据时使用Z_FINISH,否则使用Z_NO_FLUSH
+                let flushFlag = (stream.avail_in == 0) ? Z_FINISH : Z_NO_FLUSH
+                status = inflate(&stream, flushFlag)
                 let consumedBytes = prevAvailIn - stream.avail_in
                 
-                print("   Iteration \(iteration): consumed \(consumedBytes) bytes, status: \(status)")
+                print("   Iteration \(iteration): consumed \(consumedBytes) bytes, status: \(status), flush: \(flushFlag == Z_FINISH ? "FINISH" : "NO_FLUSH")")
                 
                 if status != Z_OK && status != Z_STREAM_END {
                     print("   ❌ inflate failed with status: \(status)")
