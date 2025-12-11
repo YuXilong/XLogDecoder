@@ -20,7 +20,7 @@ struct LogPreviewPanel: View {
                 Spacer()
             }
             .padding()
-            .background(.ultraThinMaterial)
+            .background(Color.white.opacity(0.05))
             
             Divider()
             
@@ -43,10 +43,8 @@ struct LogPreviewPanel: View {
                 }
             }
         }
-        .background(
-            RoundedRectangle(cornerRadius: CornerRadius.large)
-                .fill(.regularMaterial)
-        )
+        .background(.regularMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: CornerRadius.large))
         .overlay(
             RoundedRectangle(cornerRadius: CornerRadius.large)
                 .strokeBorder(.white.opacity(0.2), lineWidth: 1)
