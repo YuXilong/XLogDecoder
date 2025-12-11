@@ -45,6 +45,11 @@ enum MagicNumber: UInt8 {
         }
     }
     
+    var needsSegmentedDecompression: Bool {
+        // 0x05需要分段处理
+        return self == .compressStart1
+    }
+    
     var decryptionType: DecryptionType {
         switch self {
         case .noCompressStart, .compressStart, .compressStart1, .noCompressStart1:

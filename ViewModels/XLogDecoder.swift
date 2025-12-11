@@ -144,7 +144,33 @@ class XLogDecoder: ObservableObject {
             print("📤 Decompressing \(logData.count) bytes...")
             let beforeSize = logData.count
             do {
-                logData = try decompressor.decompress(logData)
+                // 0x05需要先分段处理
+                if header.magic.needsSegmentedDecompression {
+                    print("   🔀 Segmented decompression (magic 0x05)")
+                    var decompressData = Data()
+                    var offset = 0
+                    
+                    while offset < logData.count {
+                        // 读取2字节长度
+                        guard offset + 2 <= logData.count else { break }
+                        let segmentLength = Int(readUInt16(from: logData, at: offset))
+                        offset += 2
+                        
+                        // 提取分段数据
+                        guard offset + segmentLength <= logData.count else { break }
+                        let segment = logData[offset..<(offset + segmentLength)]
+                        decompressData.append(segment)
+                        offset += segmentLength
+                        
+                        print("      Segment: \(segmentLength) bytes")
+                    }
+                    
+                    print("   Total extracted: \(decompressData.count) bytes from \(logData.count) bytes")
+                    logData = try decompressor.decompress(decompressData)
+                } else {
+                    // 0x04, 0x09等直接解压
+                    logData = try decompressor.decompress(logData)
+                }
                 print("   ✅ Decompressed: \(beforeSize) -> \(logData.count) bytes")
             } catch {
                 print("   ❌ Decompression failed: \(error)")
@@ -170,6 +196,14 @@ class XLogDecoder: ObservableObject {
             // TEA解密需要ECDH密钥,暂时跳过
             throw DecoderError.decryptionFailed
         }
+    }
+    
+    // 安全读取UInt16 (小端序)
+    private func readUInt16(from data: Data, at offset: Int) -> UInt16 {
+        guard offset + 2 <= data.count else { return 0 }
+        let byte0 = UInt16(data[offset])
+        let byte1 = UInt16(data[offset + 1])
+        return byte0 | (byte1 << 8)
     }
     
     private func updateProgress(_ newProgress: Double) {
